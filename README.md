@@ -1,6 +1,8 @@
 # UnidecodeSharpCore
 UnidecodeSharpCore is .NET Core library, written in C#.
 
+Nuget: [![NuGet](https://img.shields.io/nuget/dt/UnidecodeSharpCore.svg)](https://www.nuget.org/packages/UnidecodeSharpCore/)
+
 It fork from [unidecodesharpfork](https://bitbucket.org/DimaStefantsov/unidecodesharpfork).
 It reference from [Gist](https://gist.github.com/neremin/6db39a951c7c8032ef5a).
 
