@@ -18,6 +18,27 @@ namespace UnidecodeSharpCore.Test
         }
 
         [Fact]
+        public void MixTest()
+        {
+            var value1 = "窳荀彧yu".Unidecode();
+            var value2 = "你好abc".Unidecode();
+            var value3 = "現在是繁體字abc123".Unidecode();
+            var value4 = "窳荀彧yu".Unidecode(UnidecodeOptions.RemoveSpace);
+            var value5 = "你好abc".Unidecode(UnidecodeOptions.RemoveSpaceAndToLower);
+            var value6 = "現在是繁體字abc123".Unidecode(UnidecodeOptions.RemoveSpaceAndToUpper);
+            var value7 = "窳荀yu彧".Unidecode(UnidecodeOptions.ToUpper);
+            var value8 = "你好abc".Unidecode(UnidecodeOptions.ToLower);
+            Assert.Equal("Yu Xun Yu yu", value1);
+            Assert.Equal("Ni Hao abc", value2);
+            Assert.Equal("Xian Zai Shi Fan Ti Zi abc123", value3);
+            Assert.Equal("YuXunYuyu", value4);
+            Assert.Equal("nihaoabc", value5);
+            Assert.Equal("XIANZAISHIFANTIZIABC123", value6);
+            Assert.Equal("YU XUN YUYU", value7);
+            Assert.Equal("ni hao abc", value8);
+        }
+
+        [Fact]
         public void CustomTest()
         {
             Assert.Equal("Rabota s kirillitsey", "Работа с кириллицей".Unidecode());

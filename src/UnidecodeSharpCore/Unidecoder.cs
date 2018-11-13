@@ -15,6 +15,8 @@ purpose.
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl.
 */
+
+using System;
 using System.Text;
 namespace UnidecodeSharpCore
 {
@@ -27,38 +29,47 @@ namespace UnidecodeSharpCore
     /// unidecode(u"\u5317\u4EB0") == "Bei Jing "
     /// </remarks>
     /// <param name="input">The input.</param>
+    /// <param name="options"></param>
     /// <returns>ASCII encoded string.</returns>
-    public static string Unidecode(this string input)
+    public static string Unidecode(this string input, UnidecodeOptions options = UnidecodeOptions.Default)
     {
         if (string.IsNullOrWhiteSpace(input))
         {
             return "";
         }
 
-        var inputLength = input.Length;
-        var output = new StringBuilder(inputLength * 2);
-        var chars = Characters.Value;
-            
+        var output = new StringBuilder(input.Length * 2);
+
         foreach (var symbol in input)
         {
-            if (symbol < 0x80)
-            {
-                output.Append(symbol);
-                continue;
-            }
 
-            var high = symbol >> 8;
-            var low  = symbol & 0xff;
-
-            WeakLazy<string[]> values;
-            if (!chars.TryGetValue(high, out values))
+            var result = Unidecode(symbol);
+            if (string.IsNullOrEmpty(result))
             {
                 continue;
             }
-            output.Append(values.Value[low]);
+            output.Append(result);
 
         }
-        return output.ToString();
+
+        switch (options)
+        {
+            case UnidecodeOptions.ToLower:
+                return output.ToString().ToLower();
+            case UnidecodeOptions.ToUpper:
+                return output.ToString().ToUpper();
+            case UnidecodeOptions.RemoveSpace:
+                return output.ToString().Replace(" ", "");
+            case UnidecodeOptions.RemoveSpaceAndToLower:
+                return output.ToString().Replace(" ", "").ToLower();
+            case UnidecodeOptions.RemoveSpaceAndToUpper:
+                return output.ToString().Replace(" ", "").ToUpper();
+            case UnidecodeOptions.Default:
+                return output.ToString();
+            default:
+                return output.ToString();
+        }
+        
     }
     /// <summary>
         /// Transliterate Unicode character to ASCII string.
@@ -77,10 +88,9 @@ namespace UnidecodeSharpCore
             }
             else
             {
-                int high = c >> 8;
-                int low = c & 0xff;
-                WeakLazy<string[]> values;
-                result = Characters.Value.TryGetValue(high, out values) ? values.Value[low] : "";
+                var high = c >> 8;
+                var low = c & 0xff;
+                result = Characters.Value.TryGetValue(high, out var values) ? values.Value[low] : "";
             }
 
             return result;

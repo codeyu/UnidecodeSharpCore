@@ -1,7 +1,41 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+  </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <Version>2.0.0</Version>
+    <authors>codeyu</authors>
+    <AssemblyName>UnidecodeSharpCore</AssemblyName>
+    <PackageId>UnidecodeSharpCore</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Copyright>Copyright 2018 © codeyu</Copyright>
+    <title>UnidecodeSharpCore</title>
+    <owners>codeyu</owners>
+    <Description>Provides string or char extension method Unidecode() that returns transliterated string.</Description>
+    <PackageTags>UnidecodeSharp</PackageTags>
+    <PackageReleaseNotes>
+      2.0.0
+      - Support target multiple frameworks.
+      - Add named and optional arguments "UnidecodeOptions".
+    </PackageReleaseNotes>
+    <PackageLicenseUrl>https://github.com/codeyu/UnidecodeSharpCore/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/codeyu/UnidecodeSharpCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/codeyu/UnidecodeSharpCore</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 </Project>
