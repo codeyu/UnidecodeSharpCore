@@ -39,7 +39,7 @@ $samples = Get-ChildItem .\samples\UnidecodeSharpCore.Examples.*
 foreach ($sample in $samples) {
     Push-Location -Path $sample
 
-    exec { & dotnet run -c Release --no-build }
+    exec { & dotnet run -c Release }
 
     Pop-Location
 }
