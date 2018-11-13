@@ -26,17 +26,11 @@ if(Test-Path .\src\UnidecodeSharpCore\artifacts) { Remove-Item .\src\UnidecodeSh
 
 exec { & dotnet restore }
 
-$tag = $(git tag -l --points-at HEAD)
-$revision = @{ $true = "{0:00000}" -f [convert]::ToInt32("0" + $env:APPVEYOR_BUILD_NUMBER, 10); $false = "local" }[$env:APPVEYOR_BUILD_NUMBER -ne $NULL];
-$suffix = @{ $true = ""; $false = "ci-$revision"}[$tag -ne $NULL -and $revision -ne "local"]
-$commitHash = $(git rev-parse --short HEAD)
-$buildSuffix = @{ $true = "$($suffix)-$($commitHash)"; $false = "$($branch)-$($commitHash)" }[$suffix -ne ""]
-
-exec { & dotnet build UnidecodeSharpCore.sln -c Release --version-suffix=$buildSuffix -v q /nologo }
+exec { & dotnet build UnidecodeSharpCore.sln -c Release -v q /nologo }
 
 Push-Location -Path .\test\UnidecodeSharpCore.Test
 
-exec { & dotnet test -configuration Release }
+exec { & dotnet test -c Release }
 
 Pop-Location
 
@@ -45,9 +39,9 @@ $samples = Get-ChildItem .\samples\UnidecodeSharpCore.Examples.*
 foreach ($sample in $samples) {
     Push-Location -Path $sample
 
-    exec { & dotnet run -configuration Release --no-build }
+    exec { & dotnet run -c Release --no-build }
 
     Pop-Location
 }
 
-exec { & dotnet pack .\src\UnidecodeSharpCore\UnidecodeSharpCore.csproj -c Release -o .\artifacts --include-symbols --no-build --version-suffix=$suffix }
+exec { & dotnet pack .\src\UnidecodeSharpCore\UnidecodeSharpCore.csproj -c Release -o .\artifacts --include-symbols --no-build }

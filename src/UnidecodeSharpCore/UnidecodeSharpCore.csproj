@@ -36,6 +36,7 @@
     <PackageProjectUrl>https://github.com/codeyu/UnidecodeSharpCore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/codeyu/UnidecodeSharpCore</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
 </Project>
