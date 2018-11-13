@@ -12,9 +12,9 @@ namespace UnidecodeSharpCore.Test
             var value1 = "\u5317\u4EB0".Unidecode();
             var value2 = "你好".Unidecode();
             var value3 = "現在是繁體字".Unidecode();
-            Assert.Equal("Bei Jing ", value1);
-            Assert.Equal("Ni Hao ", value2);
-            Assert.Equal("Xian Zai Shi Fan Ti Zi ", value3);
+            Assert.Equal("Bei Jing", value1);
+            Assert.Equal("Ni Hao", value2);
+            Assert.Equal("Xian Zai Shi Fan Ti Zi", value3);
         }
 
         [Fact]

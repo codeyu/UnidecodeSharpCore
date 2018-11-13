@@ -55,19 +55,19 @@ namespace UnidecodeSharpCore
         switch (options)
         {
             case UnidecodeOptions.ToLower:
-                return output.ToString().ToLower();
+                return output.ToString().Trim(' ').ToLower();
             case UnidecodeOptions.ToUpper:
-                return output.ToString().ToUpper();
+                return output.ToString().Trim(' ').ToUpper();
             case UnidecodeOptions.RemoveSpace:
-                return output.ToString().Replace(" ", "");
+                return output.ToString().Trim(' ').Replace(" ", "");
             case UnidecodeOptions.RemoveSpaceAndToLower:
-                return output.ToString().Replace(" ", "").ToLower();
+                return output.ToString().Trim(' ').Replace(" ", "").ToLower();
             case UnidecodeOptions.RemoveSpaceAndToUpper:
-                return output.ToString().Replace(" ", "").ToUpper();
+                return output.ToString().Trim(' ').Replace(" ", "").ToUpper();
             case UnidecodeOptions.Default:
-                return output.ToString();
+                return output.ToString().Trim(' ');
             default:
-                return output.ToString();
+                return output.ToString().Trim(' ');
         }
         
     }
