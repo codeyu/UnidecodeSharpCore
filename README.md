@@ -32,3 +32,6 @@ Generally, idea is:
             Assert.Equal("vinedos", "vi\u00f1edos".Unidecode());
         }
 ```
+
+## Python code
+[unidecode](https://github.com/avian2/unidecode)
