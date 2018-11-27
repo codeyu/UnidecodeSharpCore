@@ -7,7 +7,7 @@
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <authors>codeyu</authors>
     <AssemblyName>UnidecodeSharpCore</AssemblyName>
     <PackageId>UnidecodeSharpCore</PackageId>
@@ -28,9 +28,8 @@
     <Description>Provides string or char extension method Unidecode() that returns transliterated string.</Description>
     <PackageTags>UnidecodeSharp</PackageTags>
     <PackageReleaseNotes>
-      2.0.0
-      - Support target multiple frameworks.
-      - Add named and optional arguments "UnidecodeOptions".
+      2.0.1
+      - fix chinese(一) to ascii.
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/codeyu/UnidecodeSharpCore/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/codeyu/UnidecodeSharpCore</PackageProjectUrl>
