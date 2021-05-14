@@ -12,7 +12,7 @@ It provides `string` or `char` extension method `Unidecode()` that returns ASCII
 
 Generally, idea is:
 ```cs
-("北京").Unidecode() == "Bei Jing "
+("北京").Unidecode() == "Bei Jing"
 ```
 
 ## Usage
@@ -21,8 +21,8 @@ Generally, idea is:
         public void PythonTest()
         {
             Assert.Equal("Hello, World!", "Hello, World!".Unidecode());
-            Assert.Equal("Ni Hao ", "你好".Unidecode());
-            Assert.Equal("Xian Zai Shi Fan Ti Zi ", "現在是繁體字".Unidecode());
+            Assert.Equal("Ni Hao", "你好".Unidecode());
+            Assert.Equal("Xian Zai Shi Fan Ti Zi", "現在是繁體字".Unidecode());
             Assert.Equal("'\"\r\n", "'\"\r\n".Unidecode());
             Assert.Equal("CZSczs", "ČŽŠčžš".Unidecode());
             Assert.Equal("a", "ア".Unidecode());
